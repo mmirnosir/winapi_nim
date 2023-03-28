@@ -1,16 +1,18 @@
 import winim/lean
+import os
+import strformat
 
 proc copyAFile(): void =
     let bFile = CopyFile(
-        "C:\\Users\\Public\\new.txt",
-        "C:\\Users\\User\\Desktop\\new1.txt",
+        paramStr(1),
+        paramStr(2),
         TRUE
     )
 
     if bFile == TRUE:
-        echo("CopyFile failed")
+        echo(fmt"CopyFile has failed.\n {GetLastError()}")
     else:
-        echo("File has been successfuly copied")    
+        echo("File has been successfuly copied.")    
 
 when isMainModule:
     copyAFile()
